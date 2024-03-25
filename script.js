@@ -4,11 +4,12 @@ let namesArray = [] // Array to store names
 function addName () {
   const nameInput = document.getElementById('nameInput') // Get the input element
   const name = nameInput.value.trim() // Get the trimmed value of the input
-  namesArray.push(name)
-  displayNames() 
-  nameInput.value = ''
-  if (name === '') {
-    alert("Please enter a vaild name!"); // countines to ask for name until they enter a vaild response
+  if (name !== '') {
+    namesArray.push(name) // Adds names to the array
+    displayNames() 
+    nameInput.value = '' 
+  } else {
+    alert('Please enter a valid name.') 
   }
 }
 
