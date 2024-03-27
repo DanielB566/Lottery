@@ -4,7 +4,7 @@ let namesArray = [] // Array to store names
 function addName () {
   const nameInput = document.getElementById('nameInput') // Get the input element
   const name = nameInput.value.trim() // Get the trimmed value of the input
-  if (name !== '') {
+  if (name !== "") {
     namesArray.push(name) // Adds names to the array
     displayNames() 
     nameInput.value = '' 
@@ -32,4 +32,26 @@ function displayNames(){
 
 }
 
-document.getElementById('addNameBtn').addEventListener('click', addName) 
+function pickRandomName(){
+  const randomNameDiv = document.getElementById('randomName')
+  randomNameDiv.textContent = ''
+  randNum = Math.floor(Math.random() * namesArray.length) // generates random number for the to be used in the index of the array
+  const randomName = namesArray[randNum]
+  randomNameDiv.textContent = randomName // displays the name onto the web page.
+  namesArray.splice(randNum, 1)
+  displayNames()
+  
+  if(namesArray.length === 0 ) {
+    alert("Theirs no more names in the list!")
+  }
+
+  confetti()
+}
+
+function resetBtn(){
+
+}
+
+document.getElementById('addNameBtn').addEventListener('click', addName) // takes the class in HTML "addNameBtn" and adds onclick with addName() func 
+document.getElementById('pickRandomBtn').addEventListener('click', pickRandomName)  
+
