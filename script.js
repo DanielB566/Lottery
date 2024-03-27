@@ -49,9 +49,16 @@ function pickRandomName(){
 }
 
 function resetBtn(){
+  const randomNameDiv = document.getElementById('randomName')
+  while(namesArray.length > 0){
+    namesArray.pop()
+    displayNames()
+    randomNameDiv.textContent = ''
+  }
+  
 
 }
-
+document.getElementById('resetBtn').addEventListener('click', resetBtn)
 document.getElementById('addNameBtn').addEventListener('click', addName) // takes the class in HTML "addNameBtn" and adds onclick with addName() func 
 document.getElementById('pickRandomBtn').addEventListener('click', pickRandomName)  
 
