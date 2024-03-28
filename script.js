@@ -33,6 +33,9 @@ function displayNames(){
 }
 
 function pickRandomName(){
+  if(namesArray.length === 0 ) {
+    alert("Theirs no more names in the list!")
+  }
   const randomNameDiv = document.getElementById('randomName')
   randomNameDiv.textContent = ''
   randNum = Math.floor(Math.random() * namesArray.length) // generates random number for the to be used in the index of the array
@@ -41,9 +44,7 @@ function pickRandomName(){
   namesArray.splice(randNum, 1)
   displayNames()
   
-  if(namesArray.length === 0 ) {
-    alert("Theirs no more names in the list!")
-  }
+ 
 
   confetti()
 }
@@ -61,4 +62,8 @@ function resetBtn(){
 document.getElementById('resetBtn').addEventListener('click', resetBtn)
 document.getElementById('addNameBtn').addEventListener('click', addName) // takes the class in HTML "addNameBtn" and adds onclick with addName() func 
 document.getElementById('pickRandomBtn').addEventListener('click', pickRandomName)  
+document.addEventListener('keypress', function(e){
+  if(e.key === "Enter")
+    addName()
+})
 
