@@ -49,7 +49,7 @@ function pickRandomName(){
   confetti()
 }
 
-function resetBtn(){
+function resetBtn(){ // function to reset the whole list of names.
   const randomNameDiv = document.getElementById('randomName')
   while(namesArray.length > 0){
     namesArray.pop()
